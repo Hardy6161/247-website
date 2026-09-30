@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24/7 Challenge – Ernährungsplan & Coaching</title>
+<meta name="description" content="Ernährungspläne, Kraftpläne und persönliche Betreuung für 90 Tage. Abnehmen ohne Hungern – wähle dein Paket der 24/7 Challenge.">
+<meta name="theme-color" content="#0a1128">
+<link rel="icon" href="Medien/bild-03.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0c; --surface:#151517; --surface-2:#1d1d20; --line:#2c2c30;
+  --text:#f5f3ef; --muted:#b4b1ab; --accent:#f08a1c; --accent-2:#ffb15c; --on-accent:#0b0b0c;
+  --radius:18px; --maxw:1160px;
+  --font-head:'Barlow Condensed','Arial Narrow',sans-serif; --font-body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.65 var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:10px 16px;border-radius:8px;z-index:100;font-weight:700}
+.skip:focus{left:8px}
+.wrap{width:min(var(--maxw),100% - 32px);margin-inline:auto}
+section{padding:clamp(64px,9vw,112px) 0}
+.eyebrow{display:inline-block;font:600 .8rem/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1,h2,h3{font-family:var(--font-head);font-style:italic;font-weight:800;line-height:1.02;text-transform:uppercase;letter-spacing:.005em}
+h1{font-size:clamp(2.9rem,8vw,5.6rem)}
+h2{font-size:clamp(2.2rem,5vw,3.6rem);text-wrap:balance}
+h3{font-size:1.6rem}
+.lead{color:var(--muted);font-size:clamp(1.02rem,1.6vw,1.2rem);max-width:60ch}
+.center{text-align:center}.center .lead{margin-inline:auto}
+.sec-head{margin-bottom:48px}
+.sec-head .lead{margin-top:14px}
+.accent{color:var(--accent)}
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 26px;border-radius:999px;font:700 1rem var(--font-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s,border-color .2s;touch-action:manipulation}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 8px 28px -8px rgba(240,138,28,.6)}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent-2)}
+.btn:active{transform:scale(.98)}
+.btn-block{width:100%}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:52px;height:52px;object-fit:contain}
+.brand span{font:800 1.3rem var(--font-head);font-style:italic;text-transform:uppercase;letter-spacing:.02em}
+.nav nav{margin-left:auto;margin-right:12px}
+.nav ul{display:flex;gap:28px;list-style:none;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;transition:color .2s}
+.nav ul a:hover{color:var(--text)}
+.nav .btn{min-height:40px;padding:6px 18px;font-size:.95rem;font-weight:600}
+.brand span,.nav .btn{white-space:nowrap}
+@media(max-width:820px){.nav ul{display:none}}
+@media(max-width:420px){.brand span{font-size:1.1rem}.brand img{width:38px;height:38px}.nav .btn{padding:8px 14px;font-size:.9rem}}
+
+/* Hero – Scroll-Video */
+.hero-scroll{position:relative;height:320vh;padding:0}
+.hero-stage{position:sticky;top:68px;height:calc(100vh - 68px);height:calc(100svh - 68px);min-height:520px;overflow:hidden;background:#000;display:flex;flex-direction:column;justify-content:space-between}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.55) 0%,rgba(11,11,12,.1) 30%,rgba(11,11,12,.35) 55%,rgba(11,11,12,.9) 100%)}
+.hero-top,.hero-bottom{position:relative;z-index:1}
+.hero-top{display:flex;flex-wrap:wrap;gap:10px;padding-top:24px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(11,11,12,.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;font-size:.85rem;font-weight:500}
+.pill svg{width:16px;height:16px;color:var(--accent)}
+.pill-rate svg{fill:var(--accent);stroke:none}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;padding-bottom:clamp(28px,5vw,56px)}
+.hero-copy{max-width:720px}
+.hero-copy h1{text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.hero-copy h1 .accent{display:block}
+.hero-copy .lead{margin-top:18px;color:#e6e3dd;max-width:52ch}
+.hero-card{flex:none;width:280px;background:var(--accent);color:var(--on-accent);border-radius:18px;padding:16px;display:grid;gap:12px;box-shadow:0 24px 60px -20px rgba(240,138,28,.6)}
+.hc-label{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600}
+.hc-label svg{width:16px;height:16px}
+.hc-btn{display:flex;justify-content:space-between;align-items:center;background:var(--bg);color:var(--text);text-decoration:none;border-radius:12px;padding:8px 8px 8px 16px;min-height:52px;font-weight:700;transition:transform .2s}
+.hc-btn:hover{transform:translateY(-2px)}
+.hc-arrow{width:36px;height:36px;border-radius:10px;background:var(--surface-2);display:grid;place-items:center;color:var(--accent)}
+.hc-arrow svg{width:18px;height:18px}
+.hc-sub{color:var(--on-accent);font-size:.85rem;font-weight:600;text-decoration:none;min-height:36px;display:flex;align-items:center;gap:8px}
+.hc-sub svg{width:18px;height:18px}
+.scroll-hint{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:1rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#f5f3ef;transition:opacity .3s}
+.scroll-hint span{width:2px;height:44px;background:linear-gradient(var(--accent),transparent)}
+@media(max-width:820px){
+  .hero-bottom{flex-direction:column;align-items:stretch}
+  .hero-card{width:100%}
+  .scroll-hint{display:none}
+}
+@media(prefers-reduced-motion:reduce){.hero-scroll{height:auto}.hero-stage{position:relative;top:0}}
+
+/* Großes Zitat */
+.big-quote{margin-top:clamp(48px,7vw,88px);padding:clamp(48px,7vw,88px) 0;background:radial-gradient(ellipse at 15% 0%,rgba(240,138,28,.12),transparent 55%),#1a1a1d;border-block:1px solid var(--line)}
+.big-quote figure{max-width:820px;margin-inline:auto}
+.big-quote .stars{color:var(--accent);display:flex;gap:3px;margin-bottom:22px}
+.big-quote .stars svg{width:20px;height:20px;fill:currentColor;stroke:none}
+.big-quote blockquote p{font:600 clamp(1.5rem,3.4vw,2.4rem)/1.25 var(--font-body);letter-spacing:-.01em;text-wrap:balance}
+.big-quote cite{display:block;margin-top:22px;font-style:normal;color:var(--muted)}
+.big-quote cite b{color:var(--accent-2)}
+
+/* Stats */
+.stats{padding:0}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+.stat{padding:28px 20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border:0}
+.stat b{display:block;font:800 2.6rem/1 var(--font-head);font-style:italic;color:var(--accent)}
+.stat span{color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.stats .wrap{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* Features */
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:border-color .25s,transform .25s}
+.card:hover{border-color:rgba(240,138,28,.6);transform:translateY(-4px)}
+.card .ico{width:52px;height:52px;border-radius:14px;background:rgba(240,138,28,.14);color:var(--accent);display:grid;place-items:center;margin-bottom:18px}
+.card .ico svg{width:26px;height:26px}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:.97rem}
+.tag{display:inline-block;margin-top:14px;font-size:.78rem;font-weight:600;color:var(--accent-2);background:rgba(240,138,28,.12);padding:4px 10px;border-radius:999px}
+
+/* Pricing */
+.pricing{background:linear-gradient(180deg,transparent,rgba(240,138,28,.05),transparent)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plan{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:32px 28px;display:flex;flex-direction:column}
+.plan.featured{border:2px solid var(--accent);background:linear-gradient(180deg,#1f1811,var(--surface) 55%);transform:translateY(-12px);box-shadow:0 30px 70px -30px rgba(240,138,28,.45)}
+.plan .flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);font:700 .75rem var(--font-body);letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
+.plan .level{color:var(--accent);font:600 .8rem var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+.plan h3{font-size:2rem;margin:6px 0 4px}
+.plan .sub{color:var(--muted);font-size:.93rem;min-height:3em}
+.price-offer{display:flex;align-items:center;gap:10px;margin-top:22px}
+.price-was{color:var(--muted);font-size:1.05rem;font-weight:600;text-decoration:line-through;text-decoration-thickness:1.5px}
+.price-badge{background:rgba(240,138,28,.15);color:var(--accent-2);font:700 .72rem var(--font-body);letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.price{display:flex;align-items:baseline;gap:8px;margin:2px 0 4px;font-variant-numeric:tabular-nums}
+.price b{font:800 4rem/1 var(--font-head);font-style:italic}
+.price span{color:var(--muted);font-size:.95rem}
+.plan hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+.plan ul{list-style:none;padding:0;display:grid;gap:13px;margin-bottom:30px;flex:1}
+.plan li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem}
+.plan li svg{color:var(--accent);width:20px;height:20px;margin-top:2px}
+.plan li.inherit{color:var(--muted);font-style:italic}
+.plan li.inherit svg{color:var(--muted)}
+.plan .note{margin-top:12px;text-align:center;color:var(--muted);font-size:.82rem}
+@media(max-width:960px){.plans{grid-template-columns:1fr;max-width:480px;margin-inline:auto}.plan.featured{transform:none;order:-1}}
+.secure{display:flex;justify-content:center;align-items:center;gap:10px;color:var(--muted);font-size:.9rem;margin-top:38px}
+
+/* Results */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.shot{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);padding:0;background:var(--surface);cursor:zoom-in;aspect-ratio:1/1}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.shot:hover img{transform:scale(1.05)}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.disclaimer{color:var(--muted);font-size:.85rem;text-align:center;margin-top:22px}
+dialog{border:0;background:transparent;padding:0;max-width:min(92vw,720px);width:100%;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+dialog img{width:100%;border-radius:16px}
+#lightbox button{position:absolute;top:8px;right:8px;width:48px;height:48px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);cursor:pointer;display:grid;place-items:center}
+
+/* Testimonials */
+.quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+
+/* Kundenstimmen-Slider */
+.carousel{display:flex;align-items:center;gap:16px}
+.car-track{display:flex;gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;flex:1;min-width:0}
+.car-track::-webkit-scrollbar{display:none}
+.car-track .quote{scroll-snap-align:start;flex:0 0 calc((100% - 40px)/3);min-width:0;display:flex;flex-direction:column}
+.car-btn{flex:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,color .2s,transform .2s,opacity .2s}
+.car-btn:hover{border-color:var(--accent);color:var(--accent-2)}
+.car-btn:active{transform:scale(.94)}
+.car-btn svg{width:22px;height:22px}
+.car-prev svg{transform:scaleX(-1)}
+.car-btn:disabled{opacity:.35;cursor:default;pointer-events:none}
+.car-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:28px}
+.car-dot{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:background .2s,transform .2s}
+.car-dot[aria-current="true"]{background:var(--accent);transform:scale(1.3)}
+@media(max-width:860px){.car-track .quote{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:600px){.car-track .quote{flex-basis:86%}.carousel{gap:10px}.car-btn{width:40px;height:40px}.car-btn svg{width:19px;height:19px}}
+.quote .stars{color:var(--accent);display:flex;gap:2px;margin-bottom:12px}
+.quote .stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
+.quote p{color:#e6e3dd;font-size:.98rem}
+.quote cite{display:block;margin-top:16px;font-style:normal;font-weight:600;color:var(--accent-2)}
+
+/* FAQ */
+.faq{max-width:780px;margin-inline:auto;display:grid;gap:12px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:border-color .2s}
+details[open]{border-color:rgba(240,138,28,.6)}
+summary{list-style:none;cursor:pointer;padding:20px 24px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px}
+summary::-webkit-details-marker{display:none}
+summary svg{transition:transform .25s;color:var(--accent)}
+details[open] summary svg{transform:rotate(45deg)}
+details p{padding:0 24px 22px;color:var(--muted)}
+
+/* Final CTA */
+.final{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(36px,6vw,72px);text-align:center;position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:100%;background:radial-gradient(ellipse at center,rgba(240,138,28,.25),transparent 65%);pointer-events:none}
+.final>*{position:relative}
+.final .cta-row{justify-content:center;margin-top:30px}
+.quote-line{font:italic 700 1.4rem var(--font-head);text-transform:uppercase;color:var(--accent-2);margin-top:28px}
+
+footer{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--bg),#111113);padding:64px 0 28px;color:var(--muted);font-size:.93rem}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+footer a.foot-logo{gap:14px;margin-bottom:14px;min-height:64px}
+footer a.foot-logo:hover{color:var(--text)}
+.foot-logo img{width:64px;height:64px;object-fit:contain;filter:brightness(0) invert(.96)}
+.foot-logo span{font:800 1.9rem/1 var(--font-head);font-style:italic;text-transform:uppercase;letter-spacing:.02em;color:var(--text);white-space:nowrap}
+.foot-brand p{max-width:34ch;line-height:1.7}
+footer h4{font:700 1.05rem var(--font-body);color:var(--text);margin-bottom:14px}
+footer ul{list-style:none;padding:0;display:grid;gap:2px}
+footer a{text-decoration:none;min-height:36px;display:inline-flex;align-items:center;transition:color .2s}
+footer a:hover{color:var(--accent-2)}
+.socials{display:flex;gap:10px}
+footer a.social{width:44px;height:44px;justify-content:center;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--muted);transition:border-color .2s,transform .2s,color .2s}
+footer a.social:hover{border-color:var(--accent);color:var(--accent-2);transform:translateY(-2px)}
+footer a.social svg{width:22px;height:22px}
+@media(min-width:901px){
+  /* Logo-Zeile und Überschriften der Spalten auf einer Linie; Fließtext und erster Link starten gleich */
+  footer .foot-grid h4{min-height:64px;display:flex;align-items:center}
+  footer .foot-grid ul{margin-top:-5px}
+}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.final .cta-row .btn{min-height:52px;white-space:nowrap}
+.foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+
+/* Kontakt-Popup */
+.cf{position:fixed;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--text);padding:clamp(24px,4vw,40px);width:min(560px,calc(100% - 32px));max-width:none;margin:auto;box-shadow:0 40px 100px -30px rgba(0,0,0,.6)}
+.cf::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+.cf h2{font-size:clamp(1.9rem,4vw,2.4rem);margin-bottom:8px}
+.cf-intro{color:var(--muted);margin-bottom:22px}
+.cf-close{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--text);cursor:pointer;display:grid;place-items:center;transition:border-color .2s,color .2s}
+.cf-close:hover{border-color:var(--accent);color:var(--accent-2)}
+.cf label{display:block;font-weight:600;font-size:.92rem;margin:0 0 6px}
+.cf input,.cf textarea{width:100%;font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;margin-bottom:18px;transition:border-color .2s,box-shadow .2s}
+.cf textarea{resize:vertical;min-height:140px;line-height:1.5}
+.cf input::placeholder,.cf textarea::placeholder{color:var(--muted);opacity:.8}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(240,138,28,.3)}
+.cf-note{margin-top:14px;color:var(--muted);font-size:.85rem;text-align:center}
+.cf-status{margin-top:14px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--surface-2);border-radius:8px;font-size:.9rem}
+.cf-status a{color:var(--accent-2);font-weight:600}
+/* Produktvorschau: Auszug aus dem echten Ernährungsplan, als Modul-Übersicht + Geräte-Mockup */
+.plan-preview{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
+.pp-copy .lead{margin-top:14px}
+.pp-module{border-top:1px solid var(--line);padding:22px 0}
+.pp-copy>.pp-module:first-of-type{margin-top:28px}
+.pp-module-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pp-module-head h3{font-size:1.2rem}
+.pp-module-meta{color:var(--muted);font-size:.82rem;white-space:nowrap}
+.pp-module--locked .pp-module-head h3{color:var(--muted)}
+.pp-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:12px}
+.pp-list li{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:.95rem;line-height:1.55}
+.pp-list li svg{color:var(--accent);width:19px;height:19px;margin-top:3px;flex:none}
+.pp-list li b{color:var(--text);font-weight:600}
+
+/* Geräte-Mockup: fertiges Bild */
+.pp-devices{position:relative}
+.pp-mockup{width:100%;height:auto;display:block;border-radius:18px;animation:pp-float-mockup 7s ease-in-out infinite}
+@keyframes pp-float-mockup{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){.pp-mockup{animation:none}}
+.pp-note{margin-top:16px;color:var(--muted);font-size:.85rem;text-align:center}
+@media(max-width:900px){.pp-grid{grid-template-columns:1fr}.pp-devices{order:-1}}
+/* Motion */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+<style id="theme-blau">
+/* ===== BLAUE VARIANTE (PACE+ inspiriert) ===== */
+:root{
+  --bg:#0a1128; --surface:#101a3a; --surface-2:#16224a; --line:#26346b;
+  --text:#f2f5fb; --muted:#a9b4d6; --accent:#2f6bff; --accent-2:#6d9bff; --on-accent:#ffffff;
+}
+.btn-primary{box-shadow:0 8px 28px -8px rgba(47,107,255,.6)}
+.card .ico{background:rgba(47,107,255,.16)}
+.tag{background:rgba(47,107,255,.16);color:#9db6ff}
+.price-badge{background:rgba(47,107,255,.16);color:#9db6ff}
+.pricing{background:linear-gradient(180deg,transparent,rgba(47,107,255,.08),transparent)}
+.plan.featured{background:linear-gradient(180deg,#101d3f,var(--surface) 55%);border-color:var(--accent);box-shadow:0 30px 70px -30px rgba(47,107,255,.5)}
+.big-quote{background:radial-gradient(ellipse at 15% 0%,rgba(47,107,255,.16),transparent 55%),#101a3a}
+.final::before{background:radial-gradient(ellipse at center,rgba(47,107,255,.28),transparent 65%)}
+.quote-line{color:#9db6ff}
+footer{background:linear-gradient(180deg,var(--bg),#0d1533)}
+.brand img{filter:brightness(0) invert(.82)}
+
+/* Hero: Video bekommt einen blauen Verlauf statt Orange/Schwarz */
+.hero-shade{background:
+  linear-gradient(180deg, rgba(6,12,36,.7) 0%, rgba(10,20,55,.15) 30%, rgba(10,20,55,.35) 55%, rgba(6,12,36,.92) 100%),
+  linear-gradient(120deg, rgba(20,45,140,.45), transparent 55%)}
+.hero-video{filter:saturate(.85) brightness(.85) hue-rotate(-6deg)}
+.pill{background:rgba(10,20,55,.55);border-color:rgba(140,170,255,.28)}
+.pill svg{color:#8fb2ff}
+.pill-rate svg{fill:#8fb2ff}
+.hc-btn{background:#0a1128;color:#f2f5fb}
+.hc-arrow{background:#16224a;color:#8fb2ff}
+
+/* Schwebende Glas-Karten wie im Referenzdesign */
+.float-card{position:absolute;z-index:2;background:rgba(16,26,58,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(160,185,255,.22);border-radius:18px;padding:18px 20px;box-shadow:0 20px 50px -20px rgba(0,0,0,.6);color:#f2f5fb}
+.fc-support{right:clamp(16px,3vw,48px);top:42%;display:grid;gap:6px;min-width:220px}
+.fc-support .fc-row{display:flex;align-items:center;gap:10px}
+.fc-support .fc-ico{width:38px;height:38px;border-radius:50%;background:rgba(47,107,255,.22);display:grid;place-items:center;flex:none}
+.fc-support .fc-ico svg{width:18px;height:18px;color:#8fb2ff}
+.fc-support b{font-size:.95rem}
+.fc-support span{color:var(--muted);font-size:.8rem}
+@media(max-width:900px){.float-card{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2Z"/></symbol>
+  <symbol id="apple" viewBox="0 0 24 24"><path d="M12 7c-1-2-3-3-5-2-3 1-3.5 5-2 9 1.2 3.2 3 6 5 6 1 0 1.5-.6 2-.6s1 .6 2 .6c2 0 3.8-2.8 5-6 1.5-4 1-8-2-9-2-1-4 0-5 2Z"/><path d="M12 7c0-2 1-4 3-5"/></symbol>
+  <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
+  <symbol id="dumbbell" viewBox="0 0 24 24"><path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></symbol>
+  <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path d="m12 2 3 6.5 7 .9-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.9Z"/></symbol>
+  <symbol id="instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z"/></symbol>
+  <symbol id="calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="arrow"viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="compress" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></symbol>
+  <symbol id="user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M18 8v6M15 11h6"/></symbol>
+  <symbol id="dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.7" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="video-cam" viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-4v12l-6-4Z"/></symbol>
+  <symbol id="volume" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M17 8a5 5 0 0 1 0 8"/></symbol>
+  <symbol id="mic-off" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 11a7 7 0 0 1-7 7 7 7 0 0 1-7-7M12 18v3"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="phone-hangup" viewBox="0 0 24 24"><path d="M4 5c0-1 1-2 2-2l3 1 1 3-2 2c1 3 3 5 6 6l2-2 3 1 1 3c0 1-1 2-2 2-8 0-16-8-16-16Z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="24/7 Challenge – Startseite">
+      <img src="Medien/bild-03.png" alt="24/7 Challenge" width="52" height="52">
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#programm">Programm</a></li>
+        <li><a href="#pakete">Pakete</a></li>
+        <li><a href="#ergebnisse">Ergebnisse</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="#pakete">Paket wählen</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO (Video wird durch Scrollen abgespielt) -->
+<section class="hero-scroll" id="top" aria-label="Einführung">
+  <div class="hero-stage">
+    <video id="heroVideo" class="hero-video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1">
+      <source src="Medien/Joggen.mp4" type="video/mp4">
+    </video>
+    <div class="hero-shade" aria-hidden="true"></div>
+
+    <div class="float-card fc-support reveal in" aria-label="24/7 Support">
+      <div class="fc-row"><span class="fc-ico"><svg class="i" aria-hidden="true"><use href="#chat"/></svg></span><span><b>24/7 Support</b><br><span>Immer erreichbar</span></span></div>
+    </div>
+
+    <div class="hero-top wrap">
+      <span class="pill"><svg class="i" aria-hidden="true"><use href="#check"/></svg>90 Tage · Ohne Hungern</span>
+      <span class="pill pill-rate"><svg class="i" aria-hidden="true"><use href="#star"/></svg>Echte Ergebnisse</span>
+    </div>
+
+    <div class="hero-bottom wrap">
+      <div class="hero-copy">
+        <h1>Dein Wunschgewicht.<span class="accent">Ohne Hungern.</span></h1>
+        <p class="lead">Ernährungsplan, Kraftplan und 5 Tricks, angepasst an deinen Alltag. Dazu Betreuung per WhatsApp, wenn du sie brauchst.</p>
+      </div>
+      <aside class="hero-card" aria-label="Paket wählen">
+        <a class="hc-btn" href="#pakete">
+          <span>Paket wählen</span>
+          <span class="hc-arrow"><svg class="i" aria-hidden="true"><use href="#arrow"/></svg></span>
+        </a>
+        <a class="hc-sub" href="mailto:info@24-7challenge.de" data-contact data-subject="Kostenloses Kennenlerngespräch"><svg class="i" aria-hidden="true"><use href="#calendar"/></svg>Kostenloses Kennenlerngespräch</a>
+      </aside>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span>Scrollen</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" aria-label="Eckdaten">
+  <div class="wrap">
+    <div class="stat reveal"><b>90</b><span>Tage Programm</span></div>
+    <div class="stat reveal"><b>3×30</b><span>Minuten Training pro Woche</span></div>
+    <div class="stat reveal"><b>24/7</b><span>WhatsApp-Support</span></div>
+    <div class="stat reveal"><b>Individuell</b><span>individualisierte Ernährungspläne</span></div>
+  </div>
+</section>
+
+<!-- ZITAT -->
+<section class="big-quote reveal" aria-label="Kundenstimme">
+  <div class="wrap">
+    <figure>
+      <div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div>
+      <blockquote><p>„Ich habe viele Diäten ausprobiert und bin gescheitert. Mit der 24/7 Challenge sind fast 15 kg weggeschmolzen.“</p></blockquote>
+      <cite><b>Fabian</b> · Kunde der 24/7 Challenge</cite>
+    </figure>
+  </div>
+</section>
+
+<!-- PROGRAMM -->
+<section id="programm">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Das erwartet dich in 90 Tagen</span>
+      <h2>Vier Bausteine. <span class="accent">Ein Ziel.</span></h2>
+      <p class="lead">Kein Crash-Diät-Stress. Du bekommst einen klaren Plan, der zu deinem Leben passt und wenig Zeit kostet.</p>
+    </div>
+    <div class="grid-4">
+      <article class="card reveal">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#apple"/></svg></div>
+        <h3>Ernährungsplan</h3>
+        <p>Auf dich angepasst, mit unserer Formel. Du nimmst mehr ab, ohne zu hungern und ohne komplett auf Kohlenhydrate zu verzichten. Der Plan ist oft günstiger als dein Wocheneinkauf und mit 1–2 Änderungen familientauglich.</p>
+        <span class="tag">In allen Paketen</span>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#bolt"/></svg></div>
+        <h3>Die 5 Tricks</h3>
+        <p>Fünf einfache Gewohnheiten, die deinem Körper laut unserer Erfahrung rund 40 % mehr Antrieb geben. Du fühlst dich Tag für Tag dünner und fitter.</p>
+        <span class="tag">Ab Power</span>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#dumbbell"/></svg></div>
+        <h3>Kraftplan</h3>
+        <p>Für Zuhause oder fürs Fitnessstudio, mit den besten Übungen für schnelle Erfolge. Nur 3× pro Woche für 30 Minuten. Das spart Zeit und bringt mehr heraus.</p>
+        <span class="tag">Ab Power</span>
+      </article>
+      <article class="card reveal">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#chat"/></svg></div>
+        <h3>24/7 Betreuung</h3>
+        <p>90 Tage an deiner Seite. Bei Fragen schreibst du jederzeit auf WhatsApp und bekommst schnell Antwort. So machst du keine Fehler mehr und gibst nicht auf.</p>
+        <span class="tag">Im Paket „Elite“</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUKTVORSCHAU -->
+<section class="plan-preview" id="vorschau" aria-label="Auszug aus dem Ernährungsplan">
+  <div class="wrap pp-grid">
+    <div class="pp-copy">
+      <span class="eyebrow">So sieht's konkret aus</span>
+      <h2>Ein Blick in <span class="accent">deinen Plan.</span></h2>
+      <p class="lead">Kein abstraktes Versprechen, sondern ein echter Auszug aus einer Menükarte der 24/7 Challenge, aufgeteilt in klare Bausteine für deine 90 Tage.</p>
+
+      <div class="pp-module">
+        <div class="pp-module-head"><h3>Ernährungsplan</h3><span class="pp-module-meta">7 Menüs · 3 Mahlzeiten pro Tag</span></div>
+        <ul class="pp-list">
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Warum du <b>nicht hungern musst</b> und trotzdem Fortschritte siehst.</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Alltagstaugliche Zutaten aus jedem <b>normalen Supermarkt</b>.</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Austauschbare Alternativen fürs Abendessen, <b>flexibel für jeden Tag</b>.</li>
+        </ul>
+      </div>
+      <div class="pp-module pp-module--locked">
+        <div class="pp-module-head"><h3>Kraftplan</h3><span class="pp-module-meta">3 Einheiten · 30 Min. pro Woche</span></div>
+        <span class="tag">Ab Power</span>
+      </div>
+      <div class="pp-module pp-module--locked">
+        <div class="pp-module-head"><h3>Persönliche Betreuung</h3><span class="pp-module-meta">90 Tage · 24/7 per WhatsApp</span></div>
+        <span class="tag">Nur in Elite</span>
+      </div>
+    </div>
+
+    <div class="pp-devices reveal" aria-hidden="true">
+      <img class="pp-mockup" src="Medien/247-Challenge-Device-Mockup-web.jpg" width="1800" height="1125" loading="lazy" alt="Die 24/7 Challenge auf Laptop, Tablet und Smartphone: Menükarte, Gerichte-Übersicht und ein eingehender Anruf beim Coach">
+    </div>
+  </div>
+  <p class="pp-note wrap">Dies ist ein Original-Auszug aus Woche 1. Deinen vollständigen, persönlich angepassten Plan erhältst du mit deinem Paket.</p>
+</section>
+<!-- PAKETE -->
+<section class="pricing" id="pakete">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Wähle dein Paket</span>
+      <h2>Starte dort, wo <span class="accent">du stehst.</span></h2>
+      <p class="lead">Drei Pakete, klare Preise – aktuell mit 50 % Rabatt. Keine versteckten Kosten, jedes Paket baut auf dem vorherigen auf.</p>
+    </div>
+
+    <div class="plans">
+      <!-- Basis -->
+      <article class="plan reveal">
+        <span class="level">Paket 1 · Dein Ernährungsplan</span>
+        <h3>Basis</h3>
+        <p class="sub">Der einfache Start mit deinem persönlichen Ernährungsplan.</p>
+        <div class="price-offer"><span class="price-was">50 €</span><span class="price-badge">–50 %</span></div>
+        <div class="price"><b>25 €</b><span>einmalig</span></div>
+        <hr>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Individueller Ernährungsplan</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Ohne Hungern, ohne teure Produkte</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Familientauglich mit 1–2 Anpassungen</li>
+        </ul>
+        <a class="btn btn-ghost btn-block" data-plan="basis" data-plan-name="Basis (25 €)" href="#">Basis wählen</a>
+        <p class="note">Sichere Zahlung</p>
+      </article>
+
+      <!-- Power -->
+      <article class="plan featured reveal">
+        <span class="flag">Empfehlung</span>
+        <span class="level">Paket 2 · Ernährung + Training</span>
+        <h3>Power</h3>
+        <p class="sub">Ernährung, Training und Turbo-Tricks für sichtbare Ergebnisse.</p>
+        <div class="price-offer"><span class="price-was">100 €</span><span class="price-badge">–50 %</span></div>
+        <div class="price"><b>50 €</b><span>einmalig</span></div>
+        <hr>
+        <ul>
+          <li class="inherit"><svg class="i" aria-hidden="true"><use href="#check"/></svg>Alles aus dem Basis-Paket</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Kraftplan für Zuhause oder Studio</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Die 5 Tricks für mehr Antrieb</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Nur 3× pro Woche, 30 Minuten</li>
+        </ul>
+        <a class="btn btn-primary btn-block" data-plan="power" data-plan-name="Power (50 €)" href="#">Power wählen</a>
+        <p class="note">Sichere Zahlung</p>
+      </article>
+
+      <!-- Full -->
+      <article class="plan reveal">
+        <span class="level">Paket 3 · Volle Betreuung</span>
+        <h3>Elite</h3>
+        <p class="sub">Alles inklusive, dazu persönliche Begleitung an deiner Seite.</p>
+        <div class="price-offer"><span class="price-was">300 €</span><span class="price-badge">–50 %</span></div>
+        <div class="price"><b>150 €</b><span>pro Monat</span></div>
+        <hr>
+        <ul>
+          <li class="inherit"><svg class="i" aria-hidden="true"><use href="#check"/></svg>Alles aus Basis &amp; Power</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Alle Ernährungspläne</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Alle Kraftpläne</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>24/7 Betreuung per WhatsApp</li>
+          <li><svg class="i" aria-hidden="true"><use href="#check"/></svg>Persönliche Kontrolle, damit du Fehler vermeidest</li>
+        </ul>
+        <a class="btn btn-ghost btn-block" data-plan="elite" data-plan-name="Elite (150 €/Monat)" href="#">Elite wählen</a>
+        <p class="note">Monatliche Abrechnung</p>
+      </article>
+    </div>
+
+    <p class="secure reveal"><svg class="i" aria-hidden="true"><use href="#lock"/></svg>Sichere, verschlüsselte Zahlung. Unsicher, welches Paket passt? <a class="accent" href="mailto:info@24-7challenge.de" data-contact data-subject="Welches Paket passt zu mir?">Schreib uns kurz.</a></p>
+  </div>
+</section>
+
+<!-- ERGEBNISSE -->
+<section id="ergebnisse">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Echte Ergebnisse</span>
+      <h2>Das haben andere <span class="accent">geschafft.</span></h2>
+      <p class="lead">Kundenergebnisse aus Deutschland und der Schweiz. Tippe auf ein Bild zum Vergrößern.</p>
+    </div>
+    <div class="gallery" id="gallery">
+      <button class="shot reveal" data-full="Medien/bild-01.png" aria-label="Ergebnis vergrößern: 17 kg abgenommen"><img loading="lazy" src="Medien/bild-01.png" width="1080" height="1080" alt="Vorher-Nachher: 17 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-04.png" aria-label="Ergebnis vergrößern: 18 kg abgenommen"><img loading="lazy" src="Medien/bild-04.png" width="1080" height="1080" alt="Vorher-Nachher: 18 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-05.png" aria-label="Ergebnis vergrößern: 16 kg abgenommen"><img loading="lazy" src="Medien/bild-05.png" width="1080" height="1080" alt="Vorher-Nachher: 16 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-07.png" aria-label="Ergebnis vergrößern: 15 kg abgenommen"><img loading="lazy" src="Medien/bild-07.png" width="1080" height="1080" alt="Vorher-Nachher: 15 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-08.png" aria-label="Ergebnis vergrößern: 10 kg abgenommen"><img loading="lazy" src="Medien/bild-08.png" width="1080" height="1080" alt="Vorher-Nachher: 10 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-09.png" aria-label="Ergebnis vergrößern: 15 kg abgenommen"><img loading="lazy" src="Medien/bild-09.png" width="1080" height="1080" alt="Vorher-Nachher: 15 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-10.png" aria-label="Ergebnis vergrößern: 17 kg abgenommen"><img loading="lazy" src="Medien/bild-10.png" width="1080" height="1080" alt="Vorher-Nachher: 17 kg abgenommen"></button>
+      <button class="shot reveal" data-full="Medien/bild-06.png" aria-label="Ergebnis vergrößern: 20 kg abgenommen"><img loading="lazy" src="Medien/bild-06.png" width="1080" height="1080" alt="Vorher-Nachher: 20 kg abgenommen"></button>
+    </div>
+    <p class="disclaimer">Ergebnisse sind individuell und hängen von Ausgangslage und Umsetzung ab.</p>
+  </div>
+</section>
+
+<dialog id="lightbox" aria-label="Ergebnisbild">
+  <img alt="" id="lightbox-img" src="">
+  <button type="button" aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#x"/></svg></button>
+</dialog>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Das sagen unsere Kunden</span>
+      <h2>Kein Hungern. <span class="accent">Echte Freude.</span></h2>
+    </div>
+    <div class="carousel reveal" role="region" aria-roledescription="Karussell" aria-label="Kundenstimmen">
+      <button type="button" class="car-btn car-prev" aria-label="Vorherige Kundenstimmen"><svg class="i" aria-hidden="true"><use href="#arrow"/></svg></button>
+      <div class="car-track">
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Ich habe viele Diäten ausprobiert und bin gescheitert. Lange hat es gedauert bis ich am Ziel angekommen bin und siehe da, fast 15 kg sind seitdem weggeschmolzen. Vielen Dank.“</p></blockquote><cite>Fabian</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Ich bin einfach begeistert! Am Anfang hatte ich meine Bedenken, aber nach dem ersten Wiegen kam die Überraschung. Innerhalb einer Woche habe ich bereits mehrere Kilos verloren. Einfach DANKE.“</p></blockquote><cite>Christina</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Mittlerweile ist das so einfach. Das Hüftgold schmilzt und schmilzt. Ich bin so glücklich, diese Reise begonnen zu haben. Ohne euch hätte ich das niemals geschafft!“</p></blockquote><cite>Peggy</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Wow! Mega! Ich bin mit den Ergebnissen mehr als zufrieden. Danke dem Team für die Beratung, Motivation und natürlich auch das freundschaftliche Miteinander!“</p></blockquote><cite>Veli</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Ich bin euch dankbar. Selbst hätte ich es nie geglaubt, aber es ist so einfach gewesen mit euch. Hätte ich das ganze Wissen schon vorher gehabt, wäre ich gar nicht erst zu so einem Gewicht gekommen.“</p></blockquote><cite>Suzana</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Ich bin so glücklich. Ich hätte niemals erwartet, so gute Ergebnisse sehen zu können. Ich bin wirklich sehr begeistert und kann es jedem empfehlen!“</p></blockquote><cite>Jenny</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Ich fühle mich wieder wohl in meinem Körper. Ich bin sehr glücklich und gespannt, was noch kommt. Durch euch habe ich ein neues Lebensgefühl gewonnen!“</p></blockquote><cite>Nicole</cite></figure>
+        <figure class="quote"><div class="stars" aria-label="5 von 5 Sternen"><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg><svg aria-hidden="true"><use href="#star"/></svg></div><blockquote><p>„Durch eure 5 Tricks sah ich endlich den Erfolg für die Zeit, die ich investierte. Ich lernte, nicht zu hungern, und musste erstmal staunen, wie einfach alles gehen kann. Vielen Dank für alles.“</p></blockquote><cite>Andrea</cite></figure>
+      </div>
+      <button type="button" class="car-btn car-next" aria-label="Nächste Kundenstimmen"><svg class="i" aria-hidden="true"><use href="#arrow"/></svg></button>
+    </div>
+    <div class="car-dots" role="tablist" aria-label="Kundenstimme wählen"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Häufige Fragen</span>
+      <h2>Noch <span class="accent">Fragen?</span></h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>Muss ich hungern oder auf Kohlenhydrate verzichten?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Nein. Die Ernährungspläne sind so aufgebaut, dass du nicht hungern musst und nicht komplett auf Kohlenhydrate verzichtest. Du brauchst auch keine teuren Produkte.</p></details>
+      <details class="reveal"><summary>Wie viel Zeit brauche ich für das Training?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Der Sportteil besteht aus 3 Einheiten pro Woche mit je 30 Minuten. In Kombination mit den 5 Tricks reicht das völlig aus.</p></details>
+      <details class="reveal"><summary>Kann ich zuhause trainieren oder brauche ich ein Studio?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Beides geht. Der Kraftplan ist sowohl für Zuhause als auch für das Fitnessstudio verfügbar.</p></details>
+      <details class="reveal"><summary>Passt der Ernährungsplan auch für meine Familie?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Ja. Mit 1–2 kleinen Änderungen ist der Plan familientauglich, sodass du nicht separat kochen musst.</p></details>
+      <details class="reveal"><summary>Was ist im Paket „Elite“ zusätzlich enthalten?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Alles aus Basis und Power, also alle Ernährungs- und Kraftpläne, dazu die persönliche Betreuung. Du kannst uns jederzeit auf WhatsApp schreiben und wirst kontrolliert, damit du keine Fehler machst.</p></details>
+      <details class="reveal"><summary>Wie bezahle ich?<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Die Zahlung läuft sicher online. Die Pakete Basis (25 €) und Power (50 €) zahlst du einmalig, Elite kostet 150 € pro Monat. Alle drei aktuell mit 50 % Rabatt auf den regulären Preis.</p></details>
+      <details class="reveal"><summary>Ich bin unsicher, welches Paket zu mir passt.<svg class="i" aria-hidden="true"><use href="#plus"/></svg></summary><p>Schreib uns einfach auf WhatsApp oder buche ein kostenloses Kennenlerngespräch. Wir finden gemeinsam das passende Paket.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="final reveal">
+      <span class="eyebrow">Bereit für dein neues Ich?</span>
+      <h2>Starte jetzt deine <span class="accent">24/7 Challenge.</span></h2>
+      <p class="lead" style="margin:16px auto 0">Lass uns loslegen und gemeinsam auf deinen Erfolg hinarbeiten. Wir freuen uns auf dich.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#pakete">Jetzt Paket wählen</a>
+        <a class="btn btn-ghost" data-wa="Hallo, ich habe Interesse an der 24/7 Challenge." href="#"><svg class="i" aria-hidden="true"><use href="#wa"/></svg>Auf WhatsApp schreiben</a>
+        <a class="btn btn-ghost" href="mailto:info@24-7challenge.de" data-contact data-subject="Kostenloses Kennenlerngespräch"><svg class="i" aria-hidden="true"><use href="#clock"/></svg>Kostenloses Kennenlerngespräch</a>
+      </div>
+      <p class="quote-line">„Sieger zweifeln nicht und Zweifler siegen nicht!“</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="foot-logo" href="#top" aria-label="24/7 Challenge – nach oben"><img src="Medien/bild-03.png" alt="" width="64" height="64"><span>24/7 Challenge</span></a>
+        <p>Ernährungspläne, Kraftpläne und persönliche Betreuung für 90 Tage. Dein Weg zum Wunschgewicht, ganz ohne Hungern.</p>
+      </div>
+      <nav aria-label="Schnellzugriff">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#programm">Programm</a></li>
+          <li><a href="#pakete">Pakete</a></li>
+          <li><a href="#ergebnisse">Ergebnisse</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Rechtliches">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="rechtliches/impressum.html">Impressum</a></li>
+          <li><a href="rechtliches/agb.html">AGB</a></li>
+          <li><a href="rechtliches/widerruf.html">Widerrufsbelehrung</a></li>
+          <li><a href="rechtliches/datenschutz.html">Datenschutz</a></li>
+          <li><a href="rechtliches/rahmenbedingungen.html">Rahmenbedingungen</a></li>
+          <li><a href="mailto:info@24-7challenge.de" data-contact data-subject="Kostenloses Kennenlerngespräch">Kennenlerngespräch</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h4>Folge uns</h4>
+        <div class="socials">
+          <a class="social" href="https://www.instagram.com/24_7challenge.official/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="i" aria-hidden="true"><use href="#instagram"/></svg></a>
+          <a class="social" href="https://www.facebook.com/247Challenge" target="_blank" rel="noopener" aria-label="Facebook"><svg class="i" aria-hidden="true"><use href="#facebook"/></svg></a>
+          <a class="social" data-wa="Hallo, ich habe eine Frage zur 24/7 Challenge." href="#" aria-label="WhatsApp"><svg class="i" aria-hidden="true"><use href="#wa"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="foot-bottom">©2026 24/7 Challenge. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- KONTAKT-POPUP -->
+<dialog id="contactDialog" class="cf" aria-labelledby="cfTitle">
+  <button type="button" class="cf-close" aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#x"/></svg></button>
+  <span class="eyebrow">Kontakt</span>
+  <h2 id="cfTitle">Schreib uns eine Nachricht</h2>
+  <p class="cf-intro">Wir melden uns so schnell wie möglich bei dir.</p>
+  <form id="contactForm">
+    <label for="cfSubject">Betreff</label>
+    <input id="cfSubject" name="subject" type="text" required maxlength="120" autocomplete="off" placeholder="Worum geht es?">
+    <label for="cfMessage">Nachricht</label>
+    <textarea id="cfMessage" name="message" required maxlength="2000" placeholder="Wie können wir dir helfen?"></textarea>
+    <button class="btn btn-primary btn-block" type="submit"><svg class="i" aria-hidden="true"><use href="#mail"/></svg>E-Mail senden</button>
+    <p class="cf-note">Beim Absenden öffnet sich dein E-Mail-Programm mit deiner Nachricht an <span class="cf-mail"></span>.</p>
+    <p class="cf-status" role="status" hidden>Dein E-Mail-Programm sollte sich geöffnet haben. Falls nicht, schreib uns direkt an <a class="cf-mail-link" href="#"></a>.</p>
+  </form>
+</dialog>
+<script>
+document.documentElement.classList.add('js');
+
+/* ===== KONFIGURATION ===== */
+// Adresse des Buchungs-Wizards (ohne Slash am Ende), z. B. 'https://buchen.24-7challenge.de'.
+// Die Paket-Buttons öffnen dann den Wizard mit vorausgewähltem Paket (?paket=basis|power|elite).
+// Solange das Feld leer ist, öffnet der Button WhatsApp mit einer vorbereiteten Nachricht.
+const WIZARD_URL = '/start';
+const WHATSAPP_NUMBER = '4915208117810';
+const CONTACT_EMAIL = 'info@24-7challenge.de';
+/* ========================= */
+
+const wa = t => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll('[data-wa]').forEach(a => {
+  a.href = wa(a.dataset.wa); a.target = '_blank'; a.rel = 'noopener';
+});
+document.querySelectorAll('[data-plan]').forEach(a => {
+  if (WIZARD_URL) { a.href = `${WIZARD_URL}/?paket=${a.dataset.plan}`; }
+  else { a.href = wa(`Hallo, ich möchte das Paket ${a.dataset.planName} buchen.`); a.target = '_blank'; a.rel = 'noopener'; }
+});
+
+/* Scroll-Reveal */
+const els = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12 });
+  els.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(el); });
+} else els.forEach(el => el.classList.add('in'));
+
+/* Hero: Video läuft beim Scrollen (Scroll-Scrubbing) */
+(() => {
+  const sec = document.getElementById('top'), vid = document.getElementById('heroVideo');
+  const hint = sec.querySelector('.scroll-hint');
+  const copy = sec.querySelector('.hero-copy'), card = sec.querySelector('.hero-card');
+  if (!vid || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let target = 0, current = 0, dur = 0, ticking = false;
+  const measure = () => {
+    const r = sec.getBoundingClientRect();
+    const range = sec.offsetHeight - vid.parentElement.offsetHeight;
+    target = Math.min(1, Math.max(0, -r.top / range));
+    if (hint) hint.style.opacity = target > .03 ? 0 : 1;
+    // Überschrift/Text und Karte fliegen beim Scrollen von unten ein
+    const ease = x => 1 - Math.pow(1 - x, 3);
+    const fly = (el, from, to) => {
+      const p = ease(Math.min(1, Math.max(0, (target - from) / (to - from))));
+      el.style.opacity = p;
+      el.style.transform = `translateY(${(1 - p) * 140}px)`;
+    };
+    fly(copy, 0, .22);
+    fly(card, .08, .3);
+    if (!ticking) { ticking = true; requestAnimationFrame(step); }
+  };
+  const step = () => {
+    current += (target - current) * .18;          // sanftes Nachziehen
+    if (Math.abs(target - current) < .0005) current = target;
+    // Nur springen, wenn der letzte Sprung fertig ist – sonst staut sich die Warteschlange
+    if (dur && !vid.seeking) {
+      const t = current * (dur - .05);
+      if (Math.abs(vid.currentTime - t) > .02) vid.currentTime = t;
+    }
+    if (current !== target || vid.seeking || Math.abs(vid.currentTime - current * (dur - .05)) > .05) requestAnimationFrame(step);
+    else ticking = false;
+  };
+  const ready = () => { dur = vid.duration || 0; measure(); };
+  vid.pause();
+  measure();
+  if (vid.readyState >= 1) ready(); else vid.addEventListener('loadedmetadata', ready, { once: true });
+  addEventListener('scroll', measure, { passive: true });
+  addEventListener('resize', measure);
+})();
+
+/* Kontakt-Popup: öffnet das E-Mail-Programm mit Betreff und Nachricht */
+(() => {
+  const dlg = document.getElementById('contactDialog'); if (!dlg) return;
+  const form = document.getElementById('contactForm');
+  const subj = form.elements.subject, msg = form.elements.message;
+  const status = dlg.querySelector('.cf-status');
+  dlg.querySelectorAll('.cf-mail').forEach(s => s.textContent = CONTACT_EMAIL);
+  const link = dlg.querySelector('.cf-mail-link'); link.textContent = CONTACT_EMAIL; link.href = 'mailto:' + CONTACT_EMAIL;
+  document.querySelectorAll('[data-contact]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    subj.value = a.dataset.subject || ''; msg.value = ''; status.hidden = true;
+    dlg.showModal(); (subj.value ? msg : subj).focus();
+  }));
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subj.value.trim()) + '&body=' + encodeURIComponent(msg.value.trim());
+    status.hidden = false;
+  });
+  dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('.cf-close')) dlg.close(); });
+})();
+/* Kundenstimmen-Slider */
+(() => {
+  const track = document.querySelector('.car-track');
+  if (!track) return;
+  const items = [...track.children];
+  const prevBtn = document.querySelector('.car-prev');
+  const nextBtn = document.querySelector('.car-next');
+  const dotsWrap = document.querySelector('.car-dots');
+  const dots = items.map((item, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'car-dot'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', `Kundenstimme ${i + 1} von ${items.length}`);
+    b.addEventListener('click', () => item.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+  const update = () => {
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let idx = 0, best = Infinity;
+    items.forEach((el, i) => { const d = Math.abs((el.offsetLeft + el.offsetWidth / 2) - center); if (d < best) { best = d; idx = i; } });
+    dots.forEach((d, i) => d.setAttribute('aria-current', i === idx ? 'true' : 'false'));
+    prevBtn.disabled = track.scrollLeft <= 4;
+    nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+  };
+  const step = dir => {
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 20;
+    const w = items[0].getBoundingClientRect().width + gap;
+    track.scrollBy({ left: dir * w, behavior: 'smooth' });
+  };
+  prevBtn.addEventListener('click', () => step(-1));
+  nextBtn.addEventListener('click', () => step(1));
+  let t;
+  track.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(update, 80); }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+
+/* Lightbox */
+const dlg = document.getElementById('lightbox'), dImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.shot').forEach(b => b.addEventListener('click', () => {
+  dImg.src = b.dataset.full; dImg.alt = b.querySelector('img').alt; dlg.showModal();
+}));
+dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('button')) dlg.close(); });
+</script>
+</body>
+</html>
