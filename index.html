@@ -194,7 +194,7 @@ dialog img{width:100%;border-radius:16px}
 .car-dot{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:background .2s,transform .2s}
 .car-dot[aria-current="true"]{background:var(--accent);transform:scale(1.3)}
 @media(max-width:860px){.car-track .quote{flex-basis:calc((100% - 20px)/2)}}
-@media(max-width:600px){.car-track .quote{flex-basis:86%}.carousel{gap:10px}.car-btn{width:40px;height:40px}.car-btn svg{width:19px;height:19px}}
+@media(max-width:600px){.car-track{gap:16px}.car-track .quote{flex-basis:100%;scroll-snap-align:center;text-align:center}.quote .stars{justify-content:center}.car-btn{display:none}}
 .quote .stars{color:var(--accent);display:flex;gap:2px;margin-bottom:12px}
 .quote .stars svg{width:16px;height:16px;fill:currentColor;stroke:none}
 .quote p{color:#e6e3dd;font-size:.98rem}
@@ -241,7 +241,7 @@ footer a.social svg{width:22px;height:22px}
 .final .cta-row .btn{min-height:52px;white-space:nowrap}
 .foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem}
 @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
-@media(max-width:480px){.foot-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr;text-align:center}footer a.foot-logo{justify-content:center}.foot-brand p{margin-inline:auto}.socials{justify-content:center}.foot-bottom{text-align:center}}
 
 /* Kontakt-Popup */
 .cf{position:fixed;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--text);padding:clamp(24px,4vw,40px);width:min(560px,calc(100% - 32px));max-width:none;margin:auto;box-shadow:0 40px 100px -30px rgba(0,0,0,.6)}
